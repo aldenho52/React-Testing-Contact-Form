@@ -67,6 +67,17 @@ const ContactForm = () => {
           <label htmlFor="terms">Agree to Terms</label>
           <input type='checkbox' id="terms" name="checkbox" ref={register({ required: true })} />
         </div>
+        <div>
+          <label htmlFor="race" id='race' name='race'>Choose a race:</label>
+          <select name="race" id="race" ref={register({ required: true })}>
+            <option data-testid='human' value="human">Human</option>
+            <option data-testid='nightelf' value="nightelf">Night Elf</option>
+            <option data-testid='dwarf' value="dwarf">Dwarf</option>
+            <option data-testid='gnome' value="gnome">Gnome</option>
+            <option data-testid='draenei' value="drainei">Draenei</option>
+          </select>
+        </div>
+        
         {data && (
           <pre data-testid="printout" style={{ textAlign: "left", color: "white" }}>
             {JSON.stringify(data, null, 2)}

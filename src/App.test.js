@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, getByTestId, getAllByAltText, getAllByTestId } from "@testing-library/react";
 import App from "./App";
 import ContactForm from './components/ContactForm'
 import { act } from "react-dom/test-utils";
@@ -51,4 +51,29 @@ test('terms checkbox working', () => {
   expect(terms).toBeChecked()
   fireEvent.click(terms)
   expect(terms).not.toBeChecked();
+})
+
+test('race dropdown menu working', () => {
+  render (<ContactForm />)
+
+  const dropdown = screen.getByLabelText(/race/i)
+
+  const human = screen.getByTestId(/human/i)
+  const nightelf = screen.getByTestId(/nightelf/i)
+  const dwarf = screen.getByTestId(/dwarf/i)
+  const gnome = screen.getByTestId(/gnome/i)
+  const draenei = screen.getByTestId(/draenei/i)
+
+  
+  fireEvent.change(dropdown, {target: {name: dwarf}})
+  const dwarfText = screen.queryByText(/dwarf/i)
+  fireEvent.change(dropdown, {target: {name: human}})
+  const humanText = screen.queryByText(/human/i)
+  fireEvent.change(dropdown, {target: {name: nightelf}})
+  const nightElfText = screen.queryByText(/night elf/i)
+  fireEvent.change(dropdown, {target: {name: gnome}})
+  const gnomeText = screen.queryByText(/gnome/i)
+  fireEvent.change(dropdown, {target: {name: draenei}})
+  const draeneiText = screen.queryByText(/draenei/i)
+
 })
