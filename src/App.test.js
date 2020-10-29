@@ -42,3 +42,13 @@ test('user can fill out form and axios post request to REQRES successful', async
   const createdAt = await screen.queryByText(/createdat/i)
 
 })
+
+test('terms checkbox working', () => {
+  render (<ContactForm />)
+
+  const terms = screen.getByLabelText(/terms/i)
+  fireEvent.click(terms)
+  expect(terms).toBeTruthy()
+  fireEvent.click(terms)
+  expect(terms).not.toBeTruthy()
+})

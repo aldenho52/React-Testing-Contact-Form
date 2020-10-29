@@ -63,6 +63,10 @@ const ContactForm = () => {
           <label htmlFor="message">Message</label>
           <textarea id="message" name="message" ref={register({ required: false })} />
         </div>
+        <div>
+          <label htmlFor="terms">Agree to Terms</label>
+          <input type='checkbox' id="terms" name="checkbox" ref={register({ required: true })} />
+        </div>
         {data && (
           <pre data-testid="printout" style={{ textAlign: "left", color: "white" }}>
             {JSON.stringify(data, null, 2)}
