@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
+
   const [data, setData] = useState();
   const { register, errors, handleSubmit } = useForm({
     mode: "onBlur",
   });
+
   const onSubmit = (data) => {
     setData(data);
   };
@@ -53,11 +55,11 @@ const ContactForm = () => {
           <textarea id="message" name="message" ref={register({ required: false })} />
         </div>
         {data && (
-          <pre style={{ textAlign: "left", color: "white" }}>
+          <pre data-testid="printout" style={{ textAlign: "left", color: "white" }}>
             {JSON.stringify(data, null, 2)}
           </pre>
         )}
-        <input type="submit" />
+        <input data-testid='submit' type="submit" />
       </form>
     </div>
   );
