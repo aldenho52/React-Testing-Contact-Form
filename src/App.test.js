@@ -8,7 +8,7 @@ test("renders App without crashing", () => {
   render(<App />);
 });
 
-test('user can fill out form', async () => {
+test('user can fill out form and axios post request to REQRES successful', async () => {
   render (<ContactForm />)
 
   const firstName = screen.getByLabelText(/first name*/i);
@@ -33,9 +33,12 @@ test('user can fill out form', async () => {
 
   const newEmail = await screen.queryByText(/ach52@gmail.com/i)
   expect(newEmail).toBeInTheDocument
-  
+
   const newMessage = await screen.queryByText(/good/i)
   expect(newMessage).toBeInTheDocument
 
+  // new state added from successful req res axios post request
+  const newID = await screen.queryByText(/id/i)
+  const createdAt = await screen.queryByText(/createdat/i)
 
 })
