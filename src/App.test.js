@@ -48,7 +48,7 @@ test('terms checkbox working', () => {
 
   const terms = screen.getByLabelText(/terms/i)
   fireEvent.click(terms)
-  expect(terms).toBeTruthy()
+  expect(terms).toBeChecked()
   fireEvent.click(terms)
-  expect(terms).not.toBeTruthy()
+  expect(terms).not.toBeChecked();
 })
